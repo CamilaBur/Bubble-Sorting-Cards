@@ -42,19 +42,26 @@
               onkeydown="return false;"
             />
             <button
-              onclick="randomCard()"
               id="obtenerValor"
               type="button"
               class="btn btn-light input-height ms-2"
             >
               Draw
             </button>
-            <button type="button" class="btn btn-light input-height ms-1">
+            <button
+              id="botonSorteador"
+              type="button"
+              class="btn btn-light input-height ms-1"
+            >
               Sort
             </button>
           </div>
           <div class="col-6 d-flex justify-content-end align-items-center">
-            <img id="breathcode-icon" src="./image/1.png" alt="" />
+            <img
+              id="breathcode-icon"
+              src="https://secure.meetupstatic.com/photos/event/4/9/2/9/600_464718729.jpeg"
+              alt=""
+            />
           </div>
         </div>
         <div id="medio" class="row mt-5 mb-5">
@@ -63,6 +70,7 @@
         <div id="abajo" class="row mt-5 mb-3">
           <h1>Select sort Log:</h1>
           <!-- Acá van las cartas generadas de la segunda fila de cartas -->
+          <div id="cartas-sort" class="d-flex"></div>
         </div>
       </div>
     </section>
