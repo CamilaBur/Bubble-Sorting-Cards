@@ -6,32 +6,52 @@ import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
 window.onload = function() {
-  //write your code here
-  let palo = ["♦", "♥", "♠", "♣"];
-  let number = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "J", "Q", "K"];
+  let bottonloco = document.getElementById("obtenerValor");
+  bottonloco.addEventListener("click", function() {
+    document.getElementById("cartas-shuffle").innerHTML = "";
+    // Arrays contenedores de palo y número
+    let palo = ["♧", "♤", "♡", "♢"];
+    let number = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "J", "Q", "K"];
 
-  let sorteoPalo = Math.floor(Math.random() * palo.length);
-  let sorteoNumber = Math.floor(Math.random() * number.length);
+    // Variable que guarda el contenido del numero ingresado por el usuario
 
-  let contenedorNumber = number[sorteoNumber];
-  let contenedorPalo = palo[sorteoPalo];
+    let valorObtenido = document.getElementById("usuario-select").value;
 
-  let color = contenedorPalo == "♥" || contenedorPalo == "♦" ? "red" : "black";
+    // //  Bucle que posibilita la copia automática de cartas
+    for (let i = 1; i <= valorObtenido; i++) {
+      // Generados aleatorios de posición
+      let sorteoPalo = Math.floor(Math.random() * palo.length);
+      let sorteoNumber = Math.floor(Math.random() * number.length);
 
-  document.getElementById("arriba").style.color = color;
-  document.getElementById("arriba").innerHTML = contenedorPalo;
-  document.getElementById("medio").style.color = color;
-  document.getElementById("medio").innerHTML = contenedorNumber;
-  document.getElementById("abajo").style.color = color;
-  document.getElementById("abajo").innerHTML = contenedorPalo;
+      // Contenedor de palo y número sorteado
+      let contenedorNumber = number[sorteoNumber];
+      let contenedorPalo = palo[sorteoPalo];
+
+      if (contenedorPalo === "♡" || contenedorPalo === "♢") {
+        document.getElementById(
+          "cartas-shuffle"
+        ).innerHTML += `<div id="cartas-shuffle">
+                        <div class="card naipe m-3">
+                            <ul class="list-group list-group-flush">
+                              <li class="list-group-item border-0 text-danger">${contenedorPalo}</li>
+                              <li class="list-group-item border-0 text-center text-danger">${contenedorNumber}</li>
+                              <li class="list-group-item border-0 text-danger abajo">${contenedorPalo}</li>
+                            </ul>
+                          </div>
+                    </div>`;
+      } else {
+        document.getElementById(
+          "cartas-shuffle"
+        ).innerHTML += `<div id="cartas-shuffle">
+                        <div class="card naipe m-3">
+                            <ul class="list-group list-group-flush">
+                              <li class="list-group-item border-0">${contenedorPalo}</li>
+                              <li class="list-group-item border-0 text-center">${contenedorNumber}</li>
+                              <li class="list-group-item border-0 abajo">${contenedorPalo}</li>
+                            </ul>
+                          </div>
+                    </div>`;
+      }
+    }
+  });
 };
-
-// for (let i = 1; i <= 3; i++) {
-//   document.body.innerHTML += `<div class="card" style="width: 18rem;">
-//   <ul class="list-group list-group-flush">
-//     <li class="list-group-item" id="top">${palos[indexPalo]}</li>
-//     <li class="list-group-item" id="number">${numeros[indexNumero]}</li>
-//     <li class="list-group-item" id="bottom">${palos[indexPalo]}</li>
-//   </ul>
-// </div>`;
-// }
